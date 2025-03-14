@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/Montserrat-Variable.ttf");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat";
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+button {
+  cursor: pointer;
+}
