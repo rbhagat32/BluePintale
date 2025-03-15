@@ -3,6 +3,7 @@ import Excellence from "../Components/Home/Excellence";
 import Headings from "../Components/Home/Headings";
 import Landing from "../Components/Home/Landing";
 import Showcase from "../Components/Home/Showcase";
+import SwiperJs from "../Components/Home/SwiperJs";
 import TopSlider from "../Components/Home/TopSlider";
 import Video from "../Components/Home/Video";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Video />
       <Text />
       <Excellence />
+      <SwiperJs />
     </div>
   );
 }
