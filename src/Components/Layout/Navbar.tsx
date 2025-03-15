@@ -8,7 +8,7 @@ import { JSX, useEffect, useState } from "react";
 export default function Navbar() {
   const links = [
     { name: "Home", path: "/" },
-    { name: "Our Expertise", path: "/" },
+    { name: "Our Expertise", path: "/expertise" },
     { name: "Our Story", path: "/" },
     { name: "Careers", path: "/" },
     { name: "Contact Us", path: "/contact" },
