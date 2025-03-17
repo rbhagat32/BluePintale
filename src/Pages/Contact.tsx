@@ -26,11 +26,14 @@ export default function Contact() {
 
   const dropdownData = [
     "",
-    "Social Media Marketing",
-    "Photography & Videography",
-    "Packaging Design",
-    "Logo Design & Branding",
-    "Graphic Design",
+    "Social Media Strategy",
+    "Performance Marketing",
+    "Branding and Packaging",
+    "Content Production",
+    "PR and Community Engagement",
+    "Bussiness Consultancy",
+    "End to End Souring and Printing",
+    "Web Development",
   ];
 
   const [formData, setFormData] = useState<FormDataType>({
