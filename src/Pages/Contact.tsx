@@ -3,20 +3,19 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export default function Contact() {
-  const phoneNumber = "+91 98850 28382";
-
   type FormDataType = {
     name: string;
     email: string;
-    location: string;
+    phone: string;
     link: string;
     requirement: string;
+    description: string;
   };
 
   const formDataFields = [
     { label: "Name *", name: "name", type: "text", required: true },
     { label: "Email *", name: "email", type: "email", required: true },
-    { label: "Location", name: "location", type: "text", required: false },
+    { label: "Phone Number *", name: "phone", type: "tel", required: true },
     {
       label: "Link/Company Profile",
       name: "link",
@@ -37,17 +36,19 @@ export default function Contact() {
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
-    location: "",
+    phone: "",
     link: "",
     requirement: "",
+    description: "",
   });
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    if (name === "phone" && !/^[0-9]*$/.test(value)) return;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -66,9 +67,10 @@ export default function Contact() {
         setFormData({
           name: "",
           email: "",
-          location: "",
+          phone: "",
           link: "",
           requirement: "",
+          description: "",
         });
         setLoading(false);
         toast.success("Form submitted successfully!");
@@ -77,9 +79,10 @@ export default function Contact() {
         setFormData({
           name: "",
           email: "",
-          location: "",
+          phone: "",
           link: "",
           requirement: "",
+          description: "",
         });
         setLoading(false);
         toast.error("Some error occurred while submitting the form!");
@@ -101,7 +104,9 @@ export default function Contact() {
         we will connect with you shortly
       </h2>
 
-      <p className="font-semibold">You can also Whatsapp us on {phoneNumber}</p>
+      <p className="font-semibold">
+        You can also Whatsapp us on +91 98850 28382
+      </p>
 
       <div className="w-full bg-[#efdace] py-10">
         <form
@@ -115,9 +120,11 @@ export default function Contact() {
                 name={data.name}
                 type={data.type}
                 required={data.required}
-                value={formData[data.name as keyof FormDataType]} // Type-safe access
+                value={formData[data.name as keyof FormDataType]}
                 onChange={handleChange}
                 className="mt-2 bg-white rounded-full border-2 outline-none border-black px-5 py-2 w-[80vw] md:w-[60vw] lg:w-[50vw]"
+                inputMode={data.name === "phone" ? "numeric" : undefined}
+                pattern={data.name === "phone" ? "[0-9]{10}" : undefined}
               />
             </label>
           ))}
@@ -137,6 +144,16 @@ export default function Contact() {
                 </option>
               ))}
             </select>
+          </label>
+
+          <label className="flex flex-col">
+            Description
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="mt-2 bg-white rounded-lg border-2 outline-none border-black px-5 py-2 w-[80vw] md:w-[60vw] lg:w-[50vw] h-24"
+            />
           </label>
 
           <button

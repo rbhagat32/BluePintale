@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="px-10 md:px-14 lg:px-28 py-20 mt-20 bg-black text-white">
+    <div className="px-10 md:px-14 lg:px-28 py-20 bg-black text-white">
       <div className="flex flex-col md:flex-row md:gap-0 gap-16 justify-between">
         <div className="">
           <h1 className="text-4xl font-bold">
@@ -60,6 +60,6 @@ export default function Footer() {
           Copyrights 2025. All rights reserved.
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
